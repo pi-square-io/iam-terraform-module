@@ -62,7 +62,7 @@ The IAM assume_role_policy is a temporary security credentials that grant access
 After creating the two modules, we have to attach the created role to a policy which defines its permissions. For this
 purpose we can use an already existing policy on AWS or we can creat a new policy that fits our needs.
 1. Attach the created role to an existing policy 
-We can retrieve the existing policy on AWS using its name or its arn, in this example we choose to use the policy's arn. For this purpose, we use  Data Sources: <https://www.terraform.io/language/data-sources>
+We can retrieve the existing policy on AWS using its name or its arn, in this example we choose to use the policy's arn. For this purpose, we use [Data Sources](https://www.terraform.io/language/data-sources)
 
 
 ```sh

@@ -1,5 +1,5 @@
 module "policy_test" {
-  name        = "policy_1"
+  name        = "policy_0"
   source      = "./modules/iam-policy-module"
   policy      = jsonencode({
     Version = "2012-10-17"

@@ -1,6 +1,17 @@
 module "policy_test"{
   name               = "policy_ 1"
-  policy             =
+  policy             = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "ec2:Describe*",
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
   path               = ""
   description        = "creating a new policy"
   tags               = "policy_test_1"
@@ -13,7 +24,7 @@ module "role_test" {
   description        = "assign role to an existing aws policy"
   tags               = "role_test_1"
   depends_on = [
-    aws_iam_role_policy.example,
+    aws_iam_role_policy.role_test,
   ]
 }
 

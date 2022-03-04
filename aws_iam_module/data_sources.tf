@@ -1,5 +1,3 @@
-# data "aws_iam_policy_document" "instance-assume-role-policy" {
-#   policy  = ${data.aw}
-
-
-# }
+data "aws_iam_policy" "example" {
+  arn = "arn:aws:iam::aws:policy/AmazonGlacierReadOnlyAccess"
+}

@@ -1,5 +1,6 @@
 module "policy_test" {
-  name        = "policy_0"
+  name        = "policy_1"
+  create_policy = false 
   source      = "./modules/iam-policy-module"
   policy      = jsonencode({
     Version = "2012-10-17"
@@ -13,7 +14,6 @@ module "policy_test" {
       },
     ]
   })
-  
   path        = "/"
   description = "creating a new policy"
   tags = {
@@ -46,5 +46,6 @@ module "role_test" {
 
 resource "aws_iam_role_policy_attachment" "test-attach" {
   role       = module.role_test.name
-  policy_arn = module.policy_test.arn
+  # policy_arn = module.policy_test.arn
+  policy_arn = data.aws_iam_policy.example.arn
 }

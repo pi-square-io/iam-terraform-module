@@ -1,4 +1,5 @@
-data "aws_iam_policy" "example" {
-  name = "test_policy"
-}
+# data "aws_iam_policy_document" "instance-assume-role-policy" {
+#   policy  = ${data.aw}
 
+
+# }

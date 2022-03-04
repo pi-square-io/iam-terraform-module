@@ -1,6 +1,7 @@
-module "policy_test"{
-  name               = "policy_ 1"
-  policy             = jsonencode({
+module "policy_test" {
+  name        = "policy_1"
+  source      = "./modules/iam-policy-module"
+  policy      = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
@@ -12,23 +13,38 @@ module "policy_test"{
       },
     ]
   })
-  path               = ""
-  description        = "creating a new policy"
-  tags               = "policy_test_1"
+  
+  path        = "/"
+  description = "creating a new policy"
+  tags = {
+    PolicyDescription = "Policy created using heredoc policy"
+  }
 }
 
 module "role_test" {
   name               = "role_1"
-  assume_role_policy = ""
-  path               = ""
+  source             = "./modules/iam-role-module"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+  path               = "/"
   description        = "assign role to an existing aws policy"
-  tags               = "role_test_1"
-  depends_on = [
-    aws_iam_role_policy.role_test,
-  ]
+  tags = {
+    RoleDescription = "Role created with a new policy"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "test-attach" {
-  role       = aws_iam_role.role.name
-  policy_arn = aws_iam_policy.policy.arn
+  role       = module.role_test.name
+  policy_arn = module.policy_test.arn
 }

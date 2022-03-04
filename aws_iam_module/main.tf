@@ -40,7 +40,7 @@ module "role_test" {
   path               = "/"
   description        = "assign role to an existing aws policy"
   tags = {
-    RoleDescription = "Role created with a new policy"
+    RoleDescription  = "Role created with a new policy"
   }
 }
 

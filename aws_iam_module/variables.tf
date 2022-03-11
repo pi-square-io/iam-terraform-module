@@ -1,3 +1,8 @@
+variable "managed_policy_arn" {
+  description = "the aws managed policy arn"
+  type        = string
+}
+
 variable "create_policy" {
   description = "whether to create the IAM policy"
   type        = bool

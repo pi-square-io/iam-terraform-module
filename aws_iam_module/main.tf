@@ -18,5 +18,5 @@ resource "aws_iam_role" "role" {
 
 resource "aws_iam_role_policy_attachment" "role_policy_attachment" {
   role       = aws_iam_role.role.name
-  policy_arn = "${var.create_policy == true ? aws_iam_policy.policy[0].arn : data.managed_policy.arn}"
+  policy_arn = "${var.create_policy == true ? aws_iam_policy.policy[0].arn : data.aws_iam_policy.managed_policy.arn}"
 }

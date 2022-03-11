@@ -1,21 +1,21 @@
 output "policy_id" {
   description = "The policy's ID"
-  value       = try(aws_iam_policy.policy[0].id, "")
+  value       = try(aws_iam_policy.policy[0].id, data.aws_iam_policy.managed_policy.id)
 }
 
 output "policy_name" {
   description = "The name of the policy"
-  value       = try(aws_iam_policy.policy[0].name, "")
+  value       = try(aws_iam_policy.policy[0].name,data.aws_iam_policy.managed_policy.name)
 }
 
 output "policy_arn" {
   description = "The ARN assigned by AWS to this policy"
-  value       = try(aws_iam_policy.policy[0].arn, "")
+  value       = try(aws_iam_policy.policy[0].arn, data.aws_iam_policy.managed_policy.arn)
 }
 
 output "policy_path" {
   description = "The path of the policy in IAM"
-  value       = try(aws_iam_policy.policy[0].path, "")
+  value       = try(aws_iam_policy.policy[0].path, data.aws_iam_policy.managed_policy.path)
 }
 
 output "role_id" {

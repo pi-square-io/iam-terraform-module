@@ -3,12 +3,9 @@ data "aws_iam_policy" "managed_policy" {
 }
 
 data "template_file" "policy" {
-  template = file("../example/example.json")
-vars = {
-    bucket_name = "wrdpress-code"
-  }
+  template = file(var.policy_file_path)
 }
 
 data "template_file" "assume_role" {
-  template = file("../example/assume_role.json")
+  template = file(var.assume_role_file_path)
 }

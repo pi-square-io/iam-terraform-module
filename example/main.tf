@@ -3,10 +3,9 @@ module "aws_iam_module" {
   managed_policy_arn = "arn:aws:iam::aws:policy/AmazonGlacierReadOnlyAccess"
   create_policy = false
   policy_name   = "my_new_plicy"
-  policy_path   = "/"
-  role_name        = "my_new_role"
-  role_path        = "/"
-  role_description = ""
+  role_name        = "my_new_role" 
+  policy_file_path = "../example/example.json"
+  assume_role_file_path = "../example/assume_role.json"
   tags = {
     RoleDescription = "AWS IAM module"
   }

@@ -37,7 +37,13 @@ variable "existing_policy_arn" {
   description = "existing policy arn"
   type        = string
   default     = ""
-}
+} 
+
+variable "policy_file_path" {
+  description = "policy file path"
+  type        = string
+  default     = ""
+} 
 
 variable "role_name" {
   description = "role's name"
@@ -61,6 +67,12 @@ variable "role_description" {
   description = "role description"
   type        = string
   default     = "IAM role"
+}
+
+variable "assume_role_file_path" {
+  description = "assume role file path"
+  type        = string
+  default     = ""
 }
 
 variable "tags" {

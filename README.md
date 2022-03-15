@@ -92,26 +92,12 @@ data "template_file" "assume_role" {
 ```sh
 module "aws_iam_module" {
   source        = "../aws_iam_module"
-  create_policy = true
+  managed_policy_arn = "arn:aws:iam::aws:policy/AmazonGlacierReadOnlyAccess"
+  create_policy = false
   policy_name   = "my_new_plicy"
-  policy_path   = "/"
-  policy = "${data.template_file.policy.rendered}"
-  role_name        = "my_new_role"
-  role_path        = "/"
-  role_description = ""
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = {
-          Service = "ec2.amazonaws.com, s3.amazonaws.com"
-        }
-      },
-    ]
-  })
+  role_name        = "my_new_role" 
+  policy_file_path = "../example/example.json"
+  assume_role_file_path = "../example/assume_role.json"
   tags = {
     RoleDescription = "AWS IAM module"
   }

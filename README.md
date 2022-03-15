@@ -1,7 +1,7 @@
 ### AWS IAM module
 #### Features
 - Creating an Iam module which enables the creation of an IAM role attached to a newly created policy or to an existing one.
-- Using terraform template_file to define the policy statement.
+- Using terraform template_file to define the policy statement and the assume role statement.
 
 #### Usage
 - Creating Iam role module
